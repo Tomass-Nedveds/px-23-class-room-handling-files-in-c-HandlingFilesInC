@@ -1,20 +1,18 @@
-#include <stdio.h>
+(#include <stdio.h>
 #include <string.h>
 int main()
 {
     char buffer[500];
     char line[5];
-    FILE *fp;
-    fp = fopen("test.txt","r");
-    while(fgets(line,5,fp)!=NULL)
+    FILE *fp; //faile in fp
+    fp = fopen("test.txt","r"); //open fp
+    while(fgets(line,5,fp)!=NULL) //while
     {
         printf("%s\n",line);
-        strcat(buffer,line);
+        strcat(buffer,line); //save line in buffer
     }
-    fclose(fp);
-    printf("%s",buffer);
+    fclose(fp); //close fp
+    printf("%s",buffer); //print all symbols
 
 return 0;
-    
-    
 }
