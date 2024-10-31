@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int main(){
     char buffer [500];
@@ -11,8 +12,13 @@ int main(){
 
     printf("Enter file name: ");
     scanf("%s", fileName);
-    FILE *fp;
-    fp = fopen(fileName, "r");
+    FILE *fp = fopen(fileName, "r");
+
+    if (!fp){
+        printf("error\n");
+        return 1;
+    }
+
 
     while(fgets(line,100,fp)!=NULL)
         strcat(buffer,line);
@@ -26,9 +32,14 @@ int main(){
         }
     i++;
     }
+    
+    if (sum == 0){
+        printf("error\n");
+        return 0;
+    }
 
     fclose(fp);
     printf("%s \n",buffer);
-    printf("Sum of all word: %d", sum);
+    printf("Sum of all word: %d \n", sum);
     return 0;
 }
