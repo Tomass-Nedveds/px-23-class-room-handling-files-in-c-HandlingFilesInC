@@ -18,7 +18,6 @@ int main(){
         return 1;
     }
 
-
     while(fgets(line,100,fp)!=NULL)
         strcat(buffer,line);
     
