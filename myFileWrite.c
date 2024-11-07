@@ -6,7 +6,7 @@ int main(){
     char fileName[20];
     char name;
 
-    printf("Input file nme: ");
+    printf("Input file name: ");
     scanf("%s", fileName);
     FILE *fp = fopen(fileName, "r");
     
