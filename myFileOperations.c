@@ -6,11 +6,7 @@ int main(){
     char buffer[100];
     char line[10];
     char text[100];
-
-    printf("1.Reading file\n 2.Writing to file\n 3.Appending to file\n 4.Counting words, lines, and characters in a file\n");
-    printf("Enter number: ");
-    scnaf("");
-
+    int num;
 
     printf("Enter file name: ");
     scanf("%s", fileName);
@@ -28,10 +24,14 @@ int main(){
     fgets(text, sizeof(text), stdin);
     
 
-    
 
-    
-    fclose(fp);
-    
+
+
+
+/*    printf("1.Reading file\n2.Writing to file\n3.Appending to file\n4.Counting words, lines, and characters in a file\n");
+    printf("Enter number: ");
+    scanf("%d", &num);
+*/        
+
     return 0;
 }
