@@ -6,6 +6,8 @@ int main(){
     char buffer[999];
     char line[999];
     char text[100];
+    char ch;
+    int charCount = 0;
     int num;
     int sum = 0;
     int lineCount = 0;
@@ -51,6 +53,16 @@ int main(){
     
     if(num == 4){
         FILE *fp = fopen(fileName, "r");
+
+            while ((ch = fgetc(fp)) != EOF) {
+            charCount++;
+
+                if (ch == '\n') {
+                    lineCount++;
+                }
+            }
+
+
         int i = 0;
         while(buffer[i] != '\0'){
             if(buffer[i] >= 'A' && buffer[i] <= 'Z' || buffer[i] >= 'a' && buffer[i] <= 'z'){
@@ -61,12 +73,10 @@ int main(){
         i++;
         }
 
-        while ((end = fgetc(fp)) != EOF) {
-            if (end == '\n') {
-                lineCount++;
-         }   
-    }
-    
+        if (charCount > 0 && buffer[charCount - 1] != '\n') 
+            lineCount++;
+
+        printf("Sum of characters: %d\n", charCount);
         printf("Sum of line: %d\n", lineCount);
         printf("Sum of words: %d\n", sum);
         fclose(fp);
