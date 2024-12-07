@@ -81,6 +81,5 @@ int main(){
         printf("Sum of words: %d\n", sum);
         fclose(fp);
     }
-    
     return 0;
 }
