@@ -1,37 +1,36 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(){
+int main() {
     char text[42];
     char fileName[20];
-    char name;
+    char mode;
 
     printf("Input file name: ");
-    scanf("%s", fileName);
-    FILE *fp = fopen(fileName, "r");
-    
-    if(!fp){
-        printf("error\n");
+    scanf("%s", fileName); 
+    getchar();
+
+    printf("w or a: ");
+    scanf("%c", &mode);
+    getchar();
+
+    printf("Enter text: ");
+    fgets(text, sizeof(text), stdin);
+
+    FILE *fp = NULL;
+    if (mode == 'w') {
+        fp = fopen(fileName, "w");
+    } 
+    else if (mode == 'a') {
+        fp = fopen(fileName, "a");
+    } 
+
+    if (!fp) {
+        printf("Error opening file.\n");
         return 1;
     }
 
+    fprintf(fp, "%s", text);
     fclose(fp);
-    printf("Enter text: ");
-    getchar();
-    fgets(text, sizeof(text), stdin);
-    printf("w or a:  ");
-    scanf("%c", &name);
-
-    if(name == 'a'){
-        FILE *fp = fopen(fileName, "a");
-        fprintf(fp, "%s", text);
-        fclose(fp);
-    }
-
-    else if(name == 'w'){
-        FILE *fp = fopen(fileName, "w");
-        fprintf(fp, "%s", text);
-        fclose(fp);
-    }
     return 0;
 }
